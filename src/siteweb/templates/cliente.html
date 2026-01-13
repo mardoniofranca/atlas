@@ -1,0 +1,142 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+
+<div id="main">
+    <div class="inner">
+
+        <section>
+              <section>
+                <header class="major">
+                    <h2>Cliente</h2>
+                </header>
+                            <div>
+
+                            <form method="get" style="margin-bottom:20px;">
+                                <fieldset style="border:1px solid #ccc; padding:15px;">
+                                    <legend><strong>Filtros</strong></legend>
+
+                                    <div style="display:grid; grid-template-columns: repeat(4, 1fr); gap:10px;">
+                                        
+                                        <input type="text" name="cpf" placeholder="CPF"
+                                            value="{{ request.GET.cpf }}">
+                                        
+                                        <input type="text" name="nome" placeholder="Nome"
+                                            value="{{ request.GET.nome }}">
+
+                                        <input type="text" name="lideranca" placeholder="Liderança"
+                                            value="{{ request.GET.lideranca }}">
+
+                                        <input type="text" name="fone" placeholder="Fone"
+                                            value="{{ request.GET.fone }}">
+
+                                        <input type="text" name="email" placeholder="Email"
+                                            value="{{ request.GET.email }}">
+
+                                        <input type="text" name="endereco" placeholder="Endereco"
+                                            value="{{ request.GET.endereco }}">
+                                                                                                                                                        
+                                        <input type="text" name="zona" placeholder="Zona"
+                                            value="{{ request.GET.zona }}">
+
+                                        <input type="text" name="secao" placeholder="Seção"
+                                            value="{{ request.GET.secao }}">
+                                    </div>
+
+                                    <div style="margin-top:15px;">
+                                        <button type="submit">🔍 Filtrar</button>
+                                        <a href="{% url 'cliente' %}">Limpar</a>
+                                    </div>
+                                </fieldset>
+                            </form>
+
+
+                            </div>               
+
+                            <!-- Container da tabela -->
+                            <div style="width: 100%; overflow-x: auto;">
+                                <div style="max-height: 350px; overflow-y: auto;">
+                                    <table style="width: 100%;">
+                                        <thead>
+                                            <tr>
+                                                <th>CPF</th>
+                                                <th>Nome</th>
+                                                <th>Fone</th>
+                                                <th>Email</th>
+                                                <th>Lideranca</th>
+                                                <th>Cidade/UF</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for c in page_obj %}
+                                            <tr>
+                                                <td> 
+                                                    <a href="{% url 'cliente_detalhe' c.id %}">
+                                                        {{ c.cpf }}
+                                                    </a>
+                                                </td>
+                                                <td> 
+                                                   {{ c.nome }}
+                                                </td>
+                                                <td>{{ c.fone }}</td>
+                                                <td>{{ c.email }}</td>
+                                                <td>{{ c.lideranca }}</td>
+                                                <td>{{ c.cidade }}/{{ c.uf }}</td>
+                                            </tr>
+                                            {% empty %}
+                                            <tr>
+                                                <td colspan="5">Nenhum cliente cadastrado</td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+
+                            <div style="margin-top:20px; text-align:center;">
+                                    {% if page_obj.has_previous %}
+                                        <a href="?{% for key, value in filtros.items %}{{ key }}={{ value }}&{% endfor %}page=1"
+                                        class="button">⏮ Primeiro</a>
+                                        |
+                                        <a 
+                                        href="?{% for key, value in filtros.items %}{{ key }}={{ value }}&{% endfor %}page={{ page_obj.previous_page_number }}"
+                                        class="button"
+                                        >◀ Anterior</a>
+                                    {% else %}
+                                        ⏮ Primeiro | ◀ Anterior
+                                    {% endif %}
+
+                                    &nbsp;&nbsp;
+                                    Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}
+                                    &nbsp;&nbsp;
+
+                                    {% if page_obj.has_next %}
+                                        <a href="?{% for key, value in filtros.items %}{{ key }}={{ value }}&{% endfor %}page={{ page_obj.next_page_number }}"
+                                        class="button"
+                                        >Próximo ▶</a>
+                                        |
+                                        <a href="?{% for key, value in filtros.items %}{{ key }}={{ value }}&{% endfor %}page={{ page_obj.paginator.num_pages }}"
+                                        class="button"
+                                        >Último ⏭</a>
+                                    {% else %}
+                                        Próximo ▶ | Último ⏭
+                                    {% endif %}
+                            </div>
+
+
+                    </div>
+                </div>
+
+                <br clear="all"\>
+                <div>
+                     <a href="{% url 'cliente_cadastrar' %}">
+                        <button>Novo Cliente</button>
+                    </a>
+                </div>
+
+            </section>
+
+        </section>
+
+    </div>
+</div>
+{% endblock %}

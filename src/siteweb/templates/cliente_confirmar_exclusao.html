@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div id="main">
+    <div class="inner">
+
+        <section>
+            <header class="main">
+                <hr class="major" />
+                <h1>Cliente</h1>
+            </header>
+
+
+            <section>
+                
+                <!-- Container da tabela -->
+                <div style="width: 100%; overflow-x: auto;">
+                    <div style="max-height: 550px; overflow-y: auto;">
+                    
+                       <h2>Confirmar exclusão</h2>
+
+                        <p>Tem certeza que deseja excluir o cliente <strong>{{ cliente.nome }}</strong>?</p>
+
+                        <form method="post">
+                            {% csrf_token %}
+                            <button type="submit" style="background:red; color:white;">
+                                Sim, excluir
+                            </button>
+                            <a href="{% url 'cliente_detalhe' cliente.id %}">Cancelar</a>
+                        </form>
+
+                    </div>
+                </div>
+
+            </section>
+
+        </section>
+
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+{% load static %}
+<head>
+    <meta charset="utf-8">
+    <title>Atlas Card</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{% static 'siteweb/css/main.css' %}">
+
+        <style>
+        .icon-link {
+            text-decoration: none;
+            border-bottom: none;
+            box-shadow: none;
+        }
+    </style>
+</head>
+<body class="is-preload">
+
+<div id="wrapper">
+        {% block content %}
+                   
+        {% endblock %}
+
+
+    <div id="sidebar">
+        <div class="inner">
+            <nav id="menu">
+                <header class="major">
+                    <h2>Menu</h2>
+                </header>
+                <ul>
+                    <li><a href="\menu\">Inicial</a></li>
+                    <li><a href="\cliente\">Formulários</a></li>
+                    <li><a href="#">Vínculos</a></li>
+                    <li><a href="#">Consultas</a></li>
+                    <li><a href="#">Estatísticas</a></li>
+                    <li><a href="{% url 'login' %}">Sair</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+</div>
+
+<!-- JS -->
+<script src="{% static 'siteweb/js/jquery.min.js' %}"></script>
+<script src="{% static 'siteweb/js/browser.min.js' %}"></script>
+<script src="{% static 'siteweb/js/breakpoints.min.js' %}"></script>
+<script src="{% static 'siteweb/js/util.js' %}"></script>
+<script src="{% static 'siteweb/js/main.js' %}"></script>
+
+</body>
+</html>

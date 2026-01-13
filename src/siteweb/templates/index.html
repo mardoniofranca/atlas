@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+{% load static %}
+<head>
+    <meta charset="utf-8">
+    <title>Atlas Card</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{% static 'siteweb/css/main.css' %}">
+    <script>
+            const MENU_URL = "{% url 'menu' %}";
+    </script>
+</head>
+<body class="is-preload">
+
+<div id="wrapper">
+    <div id="main">
+        <div class="inner">
+
+            <section>
+                <header class="main">
+                    <h1>Atlas Card</h1>
+                </header>
+
+                <h2>Login</h2>         
+
+                <form onsubmit="return fazerLogin();"">
+                    <input type="text" id = "login" placeholder="Login"><br><br>
+                    <input type="password" id= "senha" placeholder="Senha"><br><br>
+                    <button type="submit">Acessar</button>
+
+                    <script src="{% static 'siteweb/js/ac.js' %}"></script>
+
+                </form>
+            </section>
+
+        </div>
+    </div>
+</div>
+
+<!-- JS -->
+<script src="{% static 'siteweb/js/jquery.min.js' %}"></script>
+<script src="{% static 'siteweb/js/browser.min.js' %}"></script>
+<script src="{% static 'siteweb/js/breakpoints.min.js' %}"></script>
+<script src="{% static 'siteweb/js/util.js' %}"></script>
+<script src="{% static 'siteweb/js/main.js' %}"></script>
+
+</body>
+</html>

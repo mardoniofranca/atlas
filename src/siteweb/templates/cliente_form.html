@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div id="main">
+    <div class="inner">
+
+        <section>
+            <header class="main">
+                <h1>Cliente</h1>
+            </header>
+
+            <section>
+                <!-- Container da tabela -->
+                <div style="width: 100%; overflow-x: auto;">
+                   
+                        <form method="post">
+                        
+                            <button type="submit">Salvar</button>
+                            <a href="{% url 'cliente' %}">Cancelar</a>
+                            <br clear="all" /><hr>
+
+                            {% csrf_token %}
+                            {{ form.as_p }}
+
+                            <button type="submit">Salvar</button>
+                            <a href="{% url 'cliente' %}">Cancelar</a>
+                        </form>
+
+                   
+                </div>
+
+            </section>
+
+        </section>
+
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<div id="main">
+    <div class="inner">
+
+        <section>
+            
+            <section>
+                <header class="major">
+                      <h2>Detalhes do Cliente</h2>
+                </header>
+
+                <!-- Container da tabela -->
+                <div style="width: 100%; overflow-x: auto;">
+            
+                    <hr>
+                             <a href="{% url 'cliente' %}">
+                                <button>Voltar</button>
+                            </a>
+
+                            <a href="{% url 'cliente_editar' cliente.id %}">
+                                <button>Alterar</button>
+                            </a>
+
+                            <a href="{% url 'cliente_excluir' cliente.id %}">
+                                <button style="background-color:red; color:white;">
+                                    Excluir
+                                </button>
+                            </a>
+                          
+                            <br clear="all" />
+                            <hr>
+
+                            <p>
+                                <strong>Nome:</strong> {{ cliente.nome }}<br/>
+                                <strong>Liderança:</strong> {{ cliente.lideranca }}<br/><br/>
+
+                                <strong>Telefone/Email:</strong> {{ cliente.fone }}/{{ cliente.email }}<br/>
+                                <strong>Endereço:</strong> {{ cliente.endereco }}/{{ cliente.numero }}<br/>
+                                <strong>Bairro:</strong> {{ cliente.bairro }}<br/>
+                                <strong>Cidade/UF:</strong> {{ cliente.cidade }} / {{ cliente.uf }}<br/><br/>
+                                <strong>Zona - Seção:</strong> {{ cliente.zona }} - {{ cliente.secao }}<br/><br/>
+                                <strong>Aniversário:</strong>
+                                    {{ cliente.dia_aniv }}/{{ cliente.mes_aniv }}/{{ cliente.ano_aniv }}
+                                
+                            </p>
+
+                           
+                    
+                   
+                </div>
+
+            </section>
+
+        </section>
+
+    </div>
+</div>
+
+
+{% endblock %}
