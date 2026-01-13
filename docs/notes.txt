@@ -1,3 +1,11 @@
+
+
+0/setup
+django
+
+0.1 crio um ambiente virtual "env"
+0.2 dependências
+
 pandas==2.2.3
 openpyxl==3.1.5
 asgiref==3.11.0
@@ -9,3 +17,14 @@ packaging==25.0
 psycopg2-binary==2.9.11
 sqlparse==0.5.4
 whitenoise==6.11.0
+
+Python 3.11.4
+
+clonar o projeto
+
+
+
+
+
+1/registrar o usuário
+(ao acessar url completa validar logado)
