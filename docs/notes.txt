@@ -22,6 +22,11 @@ Python 3.11.4
 
 clonar o projeto
 
+acessar env
+roda
+python manage.py makemigrations
+python manage.py migrate
+python manage.py runserver
 
 
 
